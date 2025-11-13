@@ -26,6 +26,9 @@ pip install Django
 pip freeze > requirements.txt
 django-admin startproject mysite
 nano mysite/mysite/settings.py # and edit line 28 -> ALLOWED_HOSTS = ['*']
+cd mysite
+python manage.py startapp polls 
+python manage.py check
 ```
 
 ### Installation
@@ -131,6 +134,11 @@ python manage.py collectstatic
 # Start development server
 python manage.py runserver
 ```
+
+## Resources
+
+Django official tutorial -> https://docs.djangoproject.com/en/5.2/intro/tutorial01/
+Django freeCodeCamp full course -> https://www.youtube.com/watch?v=o0XbHvKxw7Y
 
 ## License
 
