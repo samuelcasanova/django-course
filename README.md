@@ -29,6 +29,7 @@ nano mysite/mysite/settings.py # and edit line 28 -> ALLOWED_HOSTS = ['*']
 cd mysite
 python manage.py startapp polls 
 python manage.py check
+python polls/create-polls-models.py # creates some fixtures
 ```
 
 ### Installation
