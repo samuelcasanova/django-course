@@ -1,4 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render
 from django.utils.html import escape
 from django.views import View
 
@@ -28,3 +29,9 @@ class ClassBasedView(View):
 
 def bounce(request):
     return HttpResponseRedirect("/polls/?param=redirected")
+
+
+class TemplatedView(View):
+    def get(self, request, param):
+        info = {'param': param}
+        return render(request, 'templated.html', info)
