@@ -1,0 +1,10 @@
+QuestionText,QuestionPubDate,ChoiceText
+What is your favorite programming language?,2024-01-01 10:00:00,Python
+What is your favorite programming language?,2024-01-01 10:00:00,JavaScript
+What is your favorite programming language?,2024-01-01 10:00:00,Java
+What is your favorite web framework?,2024-02-15 12:30:00,Django
+What is your favorite web framework?,2024-02-15 12:30:00,Flask
+What is your favorite web framework?,2024-02-15 12:30:00,Rails
+When did you start programming?,2024-03-10 09:15:00,Before 2000
+When did you start programming?,2024-03-10 09:15:00,2000-2010
+When did you start programming?,2024-03-10 09:15:00,After 2010

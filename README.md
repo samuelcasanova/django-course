@@ -23,13 +23,15 @@ cd django-course
 python3 -m venv .venv
 source .venv/bin/activate
 pip install Django
+pip install django-extensions
 pip freeze > requirements.txt
 django-admin startproject mysite
 nano mysite/mysite/settings.py # and edit line 28 -> ALLOWED_HOSTS = ['*']
 cd mysite
 python manage.py startapp polls 
 python manage.py check
-python polls/create-polls-models.py # creates some fixtures
+python polls/create-polls-models.py # creates some fixtures with a hack to execute django code
+python manage.py runscript load-polls-from-csv # creates some fixtures with runscript django extensions module, official supported way of doing it
 ```
 
 ### Installation
@@ -67,74 +69,6 @@ python manage.py runserver
 ```
 
 The application will be available at `http://127.0.0.1:8000/`
-
-## Project Structure
-
-```
-django-course/
-├── manage.py              # Django management script
-├── requirements.txt       # Python dependencies
-├── README.md             # This file
-└── [project-name]/       # Main project directory
-    ├── settings.py       # Project settings
-    ├── urls.py          # URL routing
-    ├── wsgi.py          # WSGI configuration
-    ├── asgi.py          # ASGI configuration
-    └── [app-name]/      # Django applications
-        ├── models.py    # Database models
-        ├── views.py     # View logic
-        ├── urls.py      # App URL routing
-        ├── admin.py     # Admin configuration
-        ├── tests.py     # Tests
-        └── templates/   # HTML templates
-```
-
-## Learning Topics
-
-This project covers:
-
-- [ ] Django setup and configuration
-- [ ] Models and database design
-- [ ] Views and URL routing
-- [ ] Templates and template tags
-- [ ] Forms and validation
-- [ ] Static files and media
-- [ ] User authentication
-- [ ] Class-based views
-- [ ] Django ORM queries
-- [ ] Admin interface
-- [ ] Middleware
-- [ ] Signals
-- [ ] Testing
-- [ ] Deployment basics
-
-## Useful Commands
-
-```bash
-# Create a new app
-python manage.py startapp appname
-
-# Create migrations
-python manage.py makemigrations
-
-# Apply migrations
-python manage.py migrate
-
-# Access the shell
-python manage.py shell
-
-# Run tests
-python manage.py test
-
-# Create superuser
-python manage.py createsuperuser
-
-# Collect static files
-python manage.py collectstatic
-
-# Start development server
-python manage.py runserver
-```
 
 ## Resources
 
