@@ -1,16 +1,15 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.html import escape
 from django.views import View
+from polls.models import Question
 
 
 def index(request):
-    return HttpResponse("<html><body><h1>Hello, world</h1>"
-                        "<p>Welcome to the polls index page.</p>"
-                        "<p>You requested with"
-                        f" param={escape(request.GET['param'])}"
-                        " query parameter.</p>"
-                        "</body></html>")
+    latest_question_list = Question.objects \
+                           .order_by("-pub_date")[:5]
+    context = {"latest_question_list": latest_question_list}
+    return render(request, "polls/index.html", context)
 
 
 def api(request, id):
@@ -35,3 +34,22 @@ class TemplatedView(View):
     def get(self, request, param):
         info = {'param': param}
         return render(request, 'templated.html', info)
+
+
+def detail(request, question_id):
+    try:
+        question = Question.objects.get(pk=question_id)
+    except Question.DoesNotExist:
+        raise Http404("Question does not exist")
+    # alternative, get_object_or_404:
+    # question = get_object_or_404(Question, pk=question_id)
+    return render(request, "polls/detail.html", {"question": question})
+
+
+def results(request, question_id):
+    response = "You're looking at the results of question %s."
+    return HttpResponse(response % question_id)
+
+
+def vote(request, question_id):
+    return HttpResponse("You're voting on question %s." % question_id)

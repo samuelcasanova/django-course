@@ -4,7 +4,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
 from django.utils.http import urlencode
 from django.http import HttpResponse
-from django.contrib.auth.decorators import login_required
 
 
 class OpenView(View):
